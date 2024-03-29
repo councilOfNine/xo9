@@ -1,3 +1,7 @@
+<script>
+	export const prerender = true;
+</script>
+
 <html>
 	<slot />
 </html>

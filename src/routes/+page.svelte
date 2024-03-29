@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
+	export const prerender = true;
 
 	let container;
 	const HEXAGON_SIZE = 9;
