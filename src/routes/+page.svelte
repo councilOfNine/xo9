@@ -78,6 +78,11 @@
 				});
 			});
 		}
+		function onWindowResize() {
+			camera.aspect = container.clientWidth / container.clientHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(container.clientWidth, container.clientHeight);
+		}
 
 		function animate() {
 			requestAnimationFrame(animate);
@@ -100,6 +105,7 @@
 		});
 
 		animate();
+		window.addEventListener('resize', onWindowResize, false);
 
 		return () => {
 			container.removeChild(renderer.domElement);
@@ -107,7 +113,21 @@
 	});
 </script>
 
-<main bind:this={container}></main>
+<main bind:this={container}>
+	<div class="overlay">
+		<!-- Logo -->
+		<img src="/logo.jpg" alt="XO9 Logo" class="logo" />
+
+		<!-- Company Blurb -->
+		<p class="blurb">
+			<span class="highlight">We bring your ideas to life</span> with cutting-edge solutions.
+			<span class="available">Available for hire</span> for web and technology consulting.
+		</p>
+
+		<!-- Contact Email -->
+		<a href="mailto:info@xo9.io" class="contact-info">info@xo9.io</a>
+	</div>
+</main>
 
 <style>
 	main {
@@ -116,5 +136,53 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		font-family: sans-serif;
+	}
+
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		/* padding: 20px; */
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.logo {
+		max-width: 200px; /* Adjust as needed */
+		margin-bottom: 20px;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	.contact-info {
+		margin: 10px 0;
+		font-size: 2rem;
+		color: #ffffff;
+		position: fixed;
+		bottom: 1rem;
+		text-decoration: none;
+	}
+
+	.blurb {
+		color: #ffffff;
+		text-align: center;
+		max-width: 400px; /* Adjust as needed */
+		font-size: 18px;
+		position: fixed;
+		bottom: 4rem;
+	}
+	.highlight {
+		font-weight: bold;
+		color: #4caf50; /* Highlight color for the main phrase */
+	}
+
+	.available {
+		font-style: italic;
+		color: #00bcd4; /* Highlight color for availability */
 	}
 </style>

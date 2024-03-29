@@ -1,9 +1,4 @@
-<script>
-	import Nav from '../components/Nav.svelte';
-</script>
-
 <html>
-	<Nav />
 	<slot />
 </html>
 
@@ -11,5 +6,6 @@
 	html {
 		margin: 0;
 		padding: 0;
+		background: black;
 	}
 </style>
